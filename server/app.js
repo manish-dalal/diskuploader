@@ -3,6 +3,7 @@ import { Router } from './config/routes'
 import { connectMongo } from './config/mongoconnect'
 import { errorHandler } from './config/errorHandler'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import jwt from 'express-jwt'
 import helmet from 'helmet'
 import { httpStatus } from './utils/httpStatus'
@@ -12,12 +13,24 @@ import { connectMysql } from './config/mysqlconnect'
 
 const app = express()
 
+app.set('port', process.env.PORT || 5000)
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 app.use(helmet())
 app.use(
   '/api',
   jwt({ secret: secretCallback }).unless({
-    path: [ '/api/health-check', '/api/users', '/api/auth/login', '/api/users/testmysqlroute', '/api/fileupload', '/api/s3fileupload' ],
+    path: [
+      '/api/health-check',
+      '/api/users',
+      '/api/auth/login',
+      '/api/users/testmysqlroute',
+      '/api/fileupload',
+      '/api/s3fileupload',
+      '/api/msc/get',
+      '/api/msc/post'
+    ],
     requestProperty: 'auth'
   })
 )

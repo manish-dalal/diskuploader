@@ -18,6 +18,8 @@ if (unusedEnvVars.length) {
 
 const { app } = require('./server/app.js')
 
-app.listen(process.env.PORT)
+app.listen(app.get('port'), () => {
+  console.log(`Express server listening on port: ${app.get('port')}`)
+})
 
 export default app
