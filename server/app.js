@@ -10,6 +10,7 @@ import { httpStatus } from './utils/httpStatus'
 import { AppError } from './utils/appError'
 import { secretCallback } from './utils/secretCallback'
 import { connectMysql } from './config/mysqlconnect'
+import './config/cron'
 
 const app = express()
 

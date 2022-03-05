@@ -24,9 +24,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const Router = _express.default.Router();
 
 exports.Router = Router;
-Router.all('/health-check', (req, res) => res.json({
-  message: 'OK'
-}));
+Router.all('/health-check', (req, res) => {
+  console.log('API /health-check');
+  return res.json({
+    message: 'OK'
+  });
+});
 Router.use('/users', _user.userRoutes);
 Router.use('/auth', _auth.authRoutes);
 Router.use('/msc', _common.commonRoutes);

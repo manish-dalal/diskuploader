@@ -40,6 +40,16 @@ common.get = async (req, res) => {
       data
     });
   } catch (error) {
+    // if (error.response) {
+    //   // Request made and server responded
+    //   reject(response);
+    // } else if (error.request) {
+    //   // The request was made but no response was received
+    //   reject(response);
+    // } else {
+    //   // Something happened in setting up the request that triggered an Error
+    //   reject(response);
+    // }
     return res.json({
       error: error.response.data
     });

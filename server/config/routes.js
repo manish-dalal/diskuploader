@@ -7,7 +7,10 @@ import { diskStorage, limits, s3Storage, imageFileFilter } from '../utils/fileup
 import { commonRoutes } from '../modules/common/common.routes'
 const Router = express.Router()
 
-Router.all('/health-check', (req, res) => res.json({ message: 'OK' }))
+Router.all('/health-check', (req, res) => {
+  console.log('API /health-check')
+  return res.json({ message: 'OK' })
+})
 Router.use('/users', userRoutes)
 Router.use('/auth', authRoutes)
 Router.use('/msc', commonRoutes)

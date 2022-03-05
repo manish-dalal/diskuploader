@@ -29,6 +29,8 @@ var _secretCallback = require("./utils/secretCallback");
 
 var _mysqlconnect = require("./config/mysqlconnect");
 
+require("./config/cron");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = (0, _express.default)();
