@@ -36,6 +36,7 @@ Router.all('/keepalive', async (req, res) => {
   console.log('API /keepalive', req.headers.host);
 
   try {
+    console.log('req URL', `https://${req.headers.host}/ping`);
     const res1 = await _axios.default.get(`https://${req.headers.host}/ping`);
     console.log('keepalive res', res1.response);
   } catch (error) {
