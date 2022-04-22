@@ -13,11 +13,10 @@ Router.all('/health-check', (req, res) => {
   return res.json({ message: 'OK' })
 })
 Router.all('/keepalive', async (req, res) => {
-  var origin = req.get('origin')
-  console.log('API /keepalive', origin)
+  var origin = req.connection.remoteAddress
+  console.log('API /keepalive', origin, req.ip)
   try {
-    console.log('req URL', `https://${req.headers.host}/ping`)
-    const res1 = await axios.get(`https://${req.headers.host}/ping`)
+    const res1 = req.query.url && await axios.get(req.query.url)
     console.log('keepalive res', res1.response)
   } catch (error) {
     console.log('keepalive error', JSON.stringify(error))

@@ -33,12 +33,11 @@ Router.all('/health-check', (req, res) => {
   });
 });
 Router.all('/keepalive', async (req, res) => {
-  var origin = req.get('origin');
-  console.log('API /keepalive', origin);
+  var origin = req.connection.remoteAddress;
+  console.log('API /keepalive', origin, req.ip);
 
   try {
-    console.log('req URL', `https://${req.headers.host}/ping`);
-    const res1 = await _axios.default.get(`https://${req.headers.host}/ping`);
+    const res1 = req.query.url && (await _axios.default.get(req.query.url));
     console.log('keepalive res', res1.response);
   } catch (error) {
     console.log('keepalive error', JSON.stringify(error));
