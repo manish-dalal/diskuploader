@@ -1,5 +1,6 @@
 import express from 'express'
 import multer from 'multer'
+import axios from 'axios'
 import { userRoutes } from '../modules/users/user.routes'
 import { authRoutes } from '../modules/auth/auth.routes'
 import { httpStatus } from '../utils/httpStatus'
@@ -11,6 +12,17 @@ Router.all('/health-check', (req, res) => {
   console.log('API /health-check')
   return res.json({ message: 'OK' })
 })
+Router.all('/keepalive', async (req, res) => {
+  console.log('API /keepalive', req.headers.host)
+  try {
+    const res1 = await axios.get(`https://${req.headers.host}/ping`)
+    console.log('keepalive res', res1.response)
+  } catch (error) {
+    console.log('keepalive error', JSON.stringify(error))
+  }
+  return res.json({ message: 'OK' })
+})
+
 Router.use('/users', userRoutes)
 Router.use('/auth', authRoutes)
 Router.use('/msc', commonRoutes)

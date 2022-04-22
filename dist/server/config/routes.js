@@ -9,6 +9,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _multer = _interopRequireDefault(require("multer"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _user = require("../modules/users/user.routes");
 
 var _auth = require("../modules/auth/auth.routes");
@@ -26,6 +28,20 @@ const Router = _express.default.Router();
 exports.Router = Router;
 Router.all('/health-check', (req, res) => {
   console.log('API /health-check');
+  return res.json({
+    message: 'OK'
+  });
+});
+Router.all('/keepalive', async (req, res) => {
+  console.log('API /keepalive', req.headers.host);
+
+  try {
+    const res1 = await _axios.default.get(`https://${req.headers.host}/ping`);
+    console.log('keepalive res', res1.response);
+  } catch (error) {
+    console.log('keepalive error', JSON.stringify(error));
+  }
+
   return res.json({
     message: 'OK'
   });

@@ -30,7 +30,8 @@ app.use(
       '/api/fileupload',
       '/api/s3fileupload',
       '/api/msc/get',
-      '/api/msc/post'
+      '/api/msc/post',
+      '/api/keepalive'
     ],
     requestProperty: 'auth'
   })
