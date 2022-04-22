@@ -17,7 +17,7 @@ Router.all('/keepalive', async (req, res) => {
   console.log('API /keepalive', origin, req.ip)
   try {
     const res1 = req.query.url && await axios.get(req.query.url)
-    console.log('keepalive res', res1.response)
+    console.log('keepalive res', res1.data)
   } catch (error) {
     console.log('keepalive error', JSON.stringify(error))
   }

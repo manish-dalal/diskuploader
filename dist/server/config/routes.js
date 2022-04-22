@@ -38,7 +38,7 @@ Router.all('/keepalive', async (req, res) => {
 
   try {
     const res1 = req.query.url && (await _axios.default.get(req.query.url));
-    console.log('keepalive res', res1.response);
+    console.log('keepalive res', res1.data);
   } catch (error) {
     console.log('keepalive error', JSON.stringify(error));
   }
