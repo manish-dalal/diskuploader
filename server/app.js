@@ -32,7 +32,10 @@ app.use(
       '/api/msc/get',
       '/api/msc/post',
       '/api/keepalive',
-      '/api/message/list'
+      '/api/message/list',
+      '/api/task/list',
+      '/api/task/',
+      '/api/task'
     ],
     requestProperty: 'auth'
   })

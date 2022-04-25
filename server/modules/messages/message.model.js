@@ -3,7 +3,7 @@ const { Schema } = mongoose
 
 const messageSchema = new Schema(
   {
-    _partition: { type: String, required: true },
+    _partition: { type: String },
     imgDriveId: { type: String, required: true },
     text: { type: String, required: true },
     category: { type: String, required: true }

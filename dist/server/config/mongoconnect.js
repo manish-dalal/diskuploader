@@ -38,6 +38,7 @@ _mongoose.default.connection.on('error', error => {
 if (process.env.APP_ENVIROMENT !== 'test') _mongoose.default.set('debug', process.env.MONGO_DEBUG);
 
 const connectMongo = async () => {
+  // `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
   let connectionuri = process.env.MONGO_USERNAME || process.env.MONGO_PASSWORD ? `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}/${process.env.MONGO_DATABASE}` : `mongodb://${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
   await _mongoose.default.connect(connectionuri, {
     useNewUrlParser: true,

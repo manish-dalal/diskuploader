@@ -14,8 +14,7 @@ const {
 } = _mongoose.default;
 const messageSchema = new Schema({
   _partition: {
-    type: String,
-    required: true
+    type: String
   },
   imgDriveId: {
     type: String,

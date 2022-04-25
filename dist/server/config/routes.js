@@ -17,6 +17,8 @@ var _auth = require("../modules/auth/auth.routes");
 
 var _message = require("../modules/messages/message.routes");
 
+var _task = require("../modules/tasks/task.routes");
+
 var _httpStatus = require("../utils/httpStatus");
 
 var _fileupload = require("../utils/fileupload");
@@ -53,6 +55,7 @@ Router.use('/users', _user.userRoutes);
 Router.use('/auth', _auth.authRoutes);
 Router.use('/msc', _common.commonRoutes);
 Router.use('/message', _message.messageRoutes);
+Router.use('/task', _task.taskRoutes);
 Router.post('/fileupload', (0, _multer.default)({
   storage: _fileupload.diskStorage,
   limits: _fileupload.limits,
