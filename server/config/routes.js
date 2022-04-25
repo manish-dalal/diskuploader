@@ -3,6 +3,7 @@ import multer from 'multer'
 import axios from 'axios'
 import { userRoutes } from '../modules/users/user.routes'
 import { authRoutes } from '../modules/auth/auth.routes'
+import { messageRoutes } from '../modules/messages/message.routes'
 import { httpStatus } from '../utils/httpStatus'
 import { diskStorage, limits, s3Storage, imageFileFilter } from '../utils/fileupload'
 import { commonRoutes } from '../modules/common/common.routes'
@@ -27,6 +28,7 @@ Router.all('/keepalive', async (req, res) => {
 Router.use('/users', userRoutes)
 Router.use('/auth', authRoutes)
 Router.use('/msc', commonRoutes)
+Router.use('/message', messageRoutes)
 
 Router.post('/fileupload', multer({ storage: diskStorage, limits, fileFilter: imageFileFilter }).single('avatar'), (req, res) => {
   if (!req.file) return res.status(httpStatus.UNPROCESSABLE_ENTITY).json({ error: 'Please select file' })

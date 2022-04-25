@@ -31,16 +31,14 @@ if (process.env.APP_ENVIROMENT !== 'test') mongoose.set('debug', process.env.MON
 const connectMongo = async () => {
   let connectionuri =
     process.env.MONGO_USERNAME || process.env.MONGO_PASSWORD
-      ? `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
+      ? `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}/${process.env.MONGO_DATABASE}`
       : `mongodb://${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
 
   await mongoose.connect(connectionuri, {
-    autoReconnect: true,
-    reconnectTries: 1000000,
-    reconnectInterval: 3000,
     useNewUrlParser: true,
     useFindAndModify: false,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useUnifiedTopology: true
   })
 }
 

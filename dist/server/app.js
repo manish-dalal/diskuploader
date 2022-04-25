@@ -45,7 +45,7 @@ app.use((0, _helmet.default)());
 app.use('/api', (0, _expressJwt.default)({
   secret: _secretCallback.secretCallback
 }).unless({
-  path: ['/api/health-check', '/api/users', '/api/auth/login', '/api/users/testmysqlroute', '/api/fileupload', '/api/s3fileupload', '/api/msc/get', '/api/msc/post', '/api/keepalive'],
+  path: ['/api/health-check', '/api/users', '/api/auth/login', '/api/users/testmysqlroute', '/api/fileupload', '/api/s3fileupload', '/api/msc/get', '/api/msc/post', '/api/keepalive', '/api/message/list'],
   requestProperty: 'auth'
 }));
 app.use('/api', _routes.Router); // Handle 404
