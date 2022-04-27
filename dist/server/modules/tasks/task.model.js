@@ -25,7 +25,7 @@ const taskSchema = new Schema({
     type: String,
     required: true
   },
-  offset: {
+  page: {
     type: String,
     required: true
   },
@@ -44,6 +44,13 @@ const taskSchema = new Schema({
   status: {
     type: String,
     required: true
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false
+  },
+  lastExecuted: {
+    type: Date
   }
 }, {
   timestamps: true
