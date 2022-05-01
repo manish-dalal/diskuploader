@@ -33,10 +33,7 @@ app.use(
       '/api/msc/post',
       '/api/keepalive',
       '/api/message/list',
-      '/api/task/list',
-      '/api/task/',
-      '/api/task',
-      '/api/task/:id'
+      /\/api\/task*/
     ],
     requestProperty: 'auth'
   })
