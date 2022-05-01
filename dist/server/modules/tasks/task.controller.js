@@ -17,7 +17,19 @@ tasks.index = async (req, res) => {
     botToken
   } = req.query;
   let tasks = await _task.taskModel.find({
-    botToken
+    botToken,
+    isDeleted: false
+  }, {
+    category: 1,
+    channelName: 1,
+    collectionName: 1,
+    groupId: 1,
+    isDeleted: 1,
+    page: 1,
+    size: 1,
+    status: 1,
+    _id: 1,
+    pageIncrementor: 1
   });
   return res.json({
     tasks

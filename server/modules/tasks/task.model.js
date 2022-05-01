@@ -7,6 +7,7 @@ const taskSchema = new Schema(
     category: { type: String, required: true },
     size: { type: String, required: true },
     page: { type: String, required: true },
+    pageIncrementor: { type: String, required: true },
     groupId: { type: String, required: true },
     channelName: { type: String, required: true },
     collectionName: { type: String, required: true },

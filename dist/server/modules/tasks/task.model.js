@@ -29,6 +29,10 @@ const taskSchema = new Schema({
     type: String,
     required: true
   },
+  pageIncrementor: {
+    type: String,
+    required: true
+  },
   groupId: {
     type: String,
     required: true

@@ -35,7 +35,8 @@ app.use(
       '/api/message/list',
       '/api/task/list',
       '/api/task/',
-      '/api/task'
+      '/api/task',
+      '/api/task/:id'
     ],
     requestProperty: 'auth'
   })
