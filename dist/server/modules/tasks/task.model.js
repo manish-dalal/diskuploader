@@ -41,7 +41,11 @@ const taskSchema = new Schema({
     type: String,
     required: true
   },
-  collectionName: {
+  linkType: {
+    type: String,
+    required: true
+  },
+  cname: {
     type: String,
     required: true
   },
@@ -55,6 +59,9 @@ const taskSchema = new Schema({
   },
   lastExecuted: {
     type: Date
+  },
+  thumbUrl: {
+    type: String
   }
 }, {
   timestamps: true

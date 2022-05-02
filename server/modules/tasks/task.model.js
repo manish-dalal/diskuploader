@@ -10,10 +10,12 @@ const taskSchema = new Schema(
     pageIncrementor: { type: String, required: true },
     groupId: { type: String, required: true },
     channelName: { type: String, required: true },
-    collectionName: { type: String, required: true },
+    linkType: { type: String, required: true },
+    cname: { type: String, required: true },
     status: { type: String, required: true },
     isDeleted: { type: Boolean, default: false },
-    lastExecuted: { type: Date }
+    lastExecuted: { type: Date },
+    thumbUrl: { type: String }
   },
   { timestamps: true }
 )
