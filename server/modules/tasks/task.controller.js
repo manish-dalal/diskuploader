@@ -9,14 +9,17 @@ tasks.index = async (req, res) => {
     {
       category: 1,
       channelName: 1,
-      collectionName: 1,
+      linkType: 1,
+      cname: 1,
+      thumbUrl: 1,
       groupInfo: 1,
       isDeleted: 1,
       page: 1,
       size: 1,
       status: 1,
       _id: 1,
-      pageIncrementor: 1
+      pageIncrementor: 1,
+      lastExecuted: 1
     }
   )
   return res.json({ tasks })
