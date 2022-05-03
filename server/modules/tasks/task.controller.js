@@ -10,7 +10,7 @@ tasks.index = async (req, res) => {
       category: 1,
       channelName: 1,
       collectionName: 1,
-      groupId: 1,
+      groupInfo: 1,
       isDeleted: 1,
       page: 1,
       size: 1,
