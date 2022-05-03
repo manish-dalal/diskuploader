@@ -33,10 +33,6 @@ const taskSchema = new Schema({
     type: String,
     required: true
   },
-  groupId: {
-    type: String,
-    required: true
-  },
   channelName: {
     type: String,
     required: true
@@ -62,6 +58,10 @@ const taskSchema = new Schema({
   },
   thumbUrl: {
     type: String
+  },
+  groupInfo: {
+    type: Schema.Types.Mixed,
+    required: true
   }
 }, {
   timestamps: true
