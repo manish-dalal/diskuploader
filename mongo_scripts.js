@@ -5,3 +5,8 @@ db.v1_dood_messages.find().forEach(function (myDoc) {
 
 // { text:  { $regex: /Raid/, $options: 'i' }},
 // 2022-04-30T06:40:10.321+00:00
+
+db.tasks.find({ botToken : "5353424234:AAGn1_NDS_58BXXpAqnc85QmNkgnT6vUvwc" }).forEach(function (myDoc) {
+  const cat = myDoc.category.toString();
+  db.tasks.updateOne({ _id: myDoc._id }, { $set: { botToken: "5311112853:AAGoEkdFls2ZZ0pPYuUDmCrWgpcGynlITHM" } });
+});

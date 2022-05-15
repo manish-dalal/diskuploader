@@ -62,6 +62,14 @@ const taskSchema = new Schema({
   groupInfo: {
     type: Schema.Types.Mixed,
     required: true
+  },
+  isEuOrgLink: {
+    type: Boolean,
+    default: true
+  },
+  isNewMdisk: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

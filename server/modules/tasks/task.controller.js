@@ -19,7 +19,9 @@ tasks.index = async (req, res) => {
       status: 1,
       _id: 1,
       pageIncrementor: 1,
-      lastExecuted: 1
+      lastExecuted: 1,
+      isEuOrgLink: 1,
+      isNewMdisk: 1
     }
   )
   return res.json({ tasks })

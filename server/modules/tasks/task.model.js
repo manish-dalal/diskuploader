@@ -15,7 +15,9 @@ const taskSchema = new Schema(
     isDeleted: { type: Boolean, default: false },
     lastExecuted: { type: Date },
     thumbUrl: { type: String },
-    groupInfo: { type: Schema.Types.Mixed, required: true }
+    groupInfo: { type: Schema.Types.Mixed, required: true },
+    isEuOrgLink: { type: Boolean, default: true },
+    isNewMdisk: { type: Boolean, default: false }
   },
   { timestamps: true }
 )
