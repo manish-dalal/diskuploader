@@ -18,3 +18,4 @@ const commonRoutes = _express.default.Router();
 exports.commonRoutes = commonRoutes;
 commonRoutes.post('/post', (0, _asyncWrapper.asyncWrapper)(_common.common.post));
 commonRoutes.get('/get', (0, _asyncWrapper.asyncWrapper)(_common.common.get));
+commonRoutes.get('/cloudinary', (0, _asyncWrapper.asyncWrapper)(_common.common.cloudinary));

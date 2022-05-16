@@ -29,8 +29,7 @@ app.use(
       '/api/users/testmysqlroute',
       '/api/fileupload',
       '/api/s3fileupload',
-      '/api/msc/get',
-      '/api/msc/post',
+      /\/api\/msc*/,
       '/api/keepalive',
       '/api/message/list',
       /\/api\/task*/
