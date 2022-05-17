@@ -4,7 +4,8 @@ const { Schema } = mongoose
 const messageSchema = new Schema(
   {
     _partition: { type: String },
-    imgDriveId: { type: String, required: true },
+    imgDriveId: { type: String },
+    cloudinaryUrl: { type: String },
     text: { type: String, required: true },
     category: { type: String, required: true }
   },

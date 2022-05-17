@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { v2 as cloudinary } from 'cloudinary'
-import '../../config/cloudinary'
+import { getCloudinarySignature } from '../../utils/getCloudinarySignature'
 
 const common = {}
 
@@ -34,19 +33,8 @@ common.get = async (req, res) => {
 }
 common.cloudinary = async (req, res) => {
   try {
-    const apiSecret = cloudinary.config().api_secret
-    const cloudName = cloudinary.config().cloud_name
-    const apiKey = cloudinary.config().api_key
-    const timestamp = Math.round(new Date().getTime() / 1000)
-    const signature = cloudinary.utils.api_sign_request(
-      {
-        timestamp: timestamp,
-        folder: 'm'
-      },
-      apiSecret
-    )
-
-    return res.json({ timestamp, signature, cloudname: cloudName, apikey: apiKey })
+    const sigData = getCloudinarySignature()
+    return res.json(sigData)
   } catch (error) {
     return res.json({ error: error.response.data })
   }

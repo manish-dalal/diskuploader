@@ -6,4 +6,6 @@ const messageRoutes = express.Router()
 
 messageRoutes.get('/list', asyncWrapper(messages.index))
 
+messageRoutes.get('/update-cloudinary', asyncWrapper(messages.updateCloudinary))
+
 export { messageRoutes }

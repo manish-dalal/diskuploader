@@ -7,9 +7,7 @@ exports.common = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _cloudinary = require("cloudinary");
-
-require("../../config/cloudinary");
+var _getCloudinarySignature = require("../../utils/getCloudinarySignature");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62,25 +60,8 @@ common.get = async (req, res) => {
 
 common.cloudinary = async (req, res) => {
   try {
-    const apiSecret = _cloudinary.v2.config().api_secret;
-
-    const cloudName = _cloudinary.v2.config().cloud_name;
-
-    const apiKey = _cloudinary.v2.config().api_key;
-
-    const timestamp = Math.round(new Date().getTime() / 1000);
-
-    const signature = _cloudinary.v2.utils.api_sign_request({
-      timestamp: timestamp,
-      folder: 'm'
-    }, apiSecret);
-
-    return res.json({
-      timestamp,
-      signature,
-      cloudname: cloudName,
-      apikey: apiKey
-    });
+    const sigData = (0, _getCloudinarySignature.getCloudinarySignature)();
+    return res.json(sigData);
   } catch (error) {
     return res.json({
       error: error.response.data

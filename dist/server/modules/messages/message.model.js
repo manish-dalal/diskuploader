@@ -17,8 +17,10 @@ const messageSchema = new Schema({
     type: String
   },
   imgDriveId: {
-    type: String,
-    required: true
+    type: String
+  },
+  cloudinaryUrl: {
+    type: String
   },
   text: {
     type: String,
