@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from 'cloudinary'
 import '../config/cloudinary'
+const folder = 'm1'
 
 export const getCloudinarySignature = () => {
   const apiSecret = cloudinary.config().api_secret
@@ -9,9 +10,9 @@ export const getCloudinarySignature = () => {
   const signature = cloudinary.utils.api_sign_request(
     {
       timestamp: timestamp,
-      folder: 'm1'
+      folder
     },
     apiSecret
   )
-  return { timestamp, signature, cloudname: cloudName, apikey: apiKey }
+  return { timestamp, signature, cloudname: cloudName, apikey: apiKey, folder }
 }

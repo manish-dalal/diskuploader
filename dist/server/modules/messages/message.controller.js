@@ -98,15 +98,16 @@ messages.updateCloudinary = async (req, res) => {
     }).limit(parsedPagesize);
 
     for (const myDoc of messagesArr || []) {
-      if (myDoc.imgDriveId) {
+      const sigData = (0, _getCloudinarySignature.getCloudinarySignature)();
+
+      if (myDoc.imgDriveId && sigData.apikey) {
         try {
-          const sigData = (0, _getCloudinarySignature.getCloudinarySignature)();
           const formData = new URLSearchParams();
           formData.append('file', `https://drive.google.com/uc?export=view&id=${myDoc.imgDriveId}`);
           formData.append('api_key', sigData.apikey);
           formData.append('timestamp', sigData.timestamp);
           formData.append('signature', sigData.signature);
-          formData.append('folder', 'm1');
+          formData.append('folder', sigData.folder);
           const url = 'https://api.cloudinary.com/v1_1/' + sigData.cloudname + '/auto/upload';
           const {
             data = {}
