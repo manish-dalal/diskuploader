@@ -12,6 +12,7 @@ db.v1_dood_messages.find().forEach(function (myDoc) {
 }); // { text:  { $regex: /Raid/, $options: 'i' }},
 // 2022-04-30T06:40:10.321+00:00
 
+var count = 1;
 db.tasks.find({
   botToken: "5353424234:AAGn1_NDS_58BXXpAqnc85QmNkgnT6vUvwc"
 }).forEach(function (myDoc) {
@@ -23,4 +24,6 @@ db.tasks.find({
       botToken: "5311112853:AAGoEkdFls2ZZ0pPYuUDmCrWgpcGynlITHM"
     }
   });
-});
+  console.log("index", count);
+  count++;
+}); // { category: "4", imgDriveId: { $nin: ['', null] }, cloudinaryUrl: { $in: ['', null] } }
