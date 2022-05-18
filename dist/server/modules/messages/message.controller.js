@@ -112,6 +112,7 @@ messages.updateCloudinary = async (req, res) => {
           const {
             data = {}
           } = await _axios.default.post(url, formData);
+          console.log('data', JSON.stringify(data));
           const cloudinaryUrl = data.secure_url;
           await messageModel.findOneAndUpdate({
             _id: myDoc._id
@@ -122,6 +123,7 @@ messages.updateCloudinary = async (req, res) => {
           });
           myDoc.cloudinaryUrl = data.secure_url;
         } catch (error1) {
+          console.log('myDoc', myDoc._id);
           console.log('error1', error1);
         }
       }

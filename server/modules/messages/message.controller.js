@@ -77,10 +77,12 @@ messages.updateCloudinary = async (req, res) => {
           formData.append('folder', sigData.folder)
           const url = 'https://api.cloudinary.com/v1_1/' + sigData.cloudname + '/auto/upload'
           const { data = {} } = await axios.post(url, formData)
+          console.log('data', JSON.stringify(data))
           const cloudinaryUrl = data.secure_url
           await messageModel.findOneAndUpdate({ _id: myDoc._id }, { $set: { cloudinaryUrl } })
           myDoc.cloudinaryUrl = data.secure_url
         } catch (error1) {
+          console.log('myDoc', myDoc._id)
           console.log('error1', error1)
         }
       }
