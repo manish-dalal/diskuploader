@@ -125,6 +125,9 @@ messages.updateCloudinary = async (req, res) => {
         } catch (error1) {
           console.log('myDoc', myDoc._id);
           console.log('error1', error1);
+          console.log('error1 message', error1.message);
+          console.log('error1 data', error1.data);
+          console.log('error1 response', error1.response);
         }
       }
     }
