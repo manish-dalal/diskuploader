@@ -66,7 +66,7 @@ messages.updateCloudinary = async (req, res) => {
       .limit(parsedPagesize)
 
     for (const myDoc of messagesArr || []) {
-      const sigData = getCloudinarySignature()
+      const sigData = getCloudinarySignature(`${linkType}1`)
       if (myDoc.imgDriveId && sigData.apikey) {
         try {
           const formData = new URLSearchParams()

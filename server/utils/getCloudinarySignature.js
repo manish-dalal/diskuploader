@@ -1,8 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary'
 import '../config/cloudinary'
-const folder = 'm1'
 
-export const getCloudinarySignature = () => {
+export const getCloudinarySignature = (folder = 'm1') => {
   const apiSecret = cloudinary.config().api_secret
   const cloudName = cloudinary.config().cloud_name
   const apiKey = cloudinary.config().api_key
