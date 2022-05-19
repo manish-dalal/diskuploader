@@ -16,6 +16,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const messages = {};
 exports.messages = messages;
 
+const sleep = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 messages.index = async (req, res) => {
   try {
     const {
@@ -102,8 +106,11 @@ messages.updateCloudinary = async (req, res) => {
 
       if (myDoc.imgDriveId && sigData.apikey) {
         try {
-          const formData = new URLSearchParams();
-          formData.append('file', `https://drive.google.com/uc?export=view&id=${myDoc.imgDriveId}`);
+          await sleep(1000);
+          const formData = new URLSearchParams(); // `https://drive.google.com/uc?export=view&id=${myDoc.imgDriveId}`
+
+          const mdiskUrl = `https://mdiskdoodbot.herokuapp.com/api/v1/drive/file/temp.jpg?id=${myDoc.imgDriveId}`;
+          formData.append('file', mdiskUrl);
           formData.append('api_key', sigData.apikey);
           formData.append('timestamp', sigData.timestamp);
           formData.append('signature', sigData.signature);

@@ -4,6 +4,10 @@ import { getCloudinarySignature } from '../../utils/getCloudinarySignature'
 
 const messages = {}
 
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 messages.index = async (req, res) => {
   try {
     const {
@@ -69,8 +73,11 @@ messages.updateCloudinary = async (req, res) => {
       const sigData = getCloudinarySignature(`${linkType}1`)
       if (myDoc.imgDriveId && sigData.apikey) {
         try {
+          await sleep(1000)
           const formData = new URLSearchParams()
-          formData.append('file', `https://drive.google.com/uc?export=view&id=${myDoc.imgDriveId}`)
+          // `https://drive.google.com/uc?export=view&id=${myDoc.imgDriveId}`
+          const mdiskUrl = `https://mdiskdoodbot.herokuapp.com/api/v1/drive/file/temp.jpg?id=${myDoc.imgDriveId}`
+          formData.append('file', mdiskUrl)
           formData.append('api_key', sigData.apikey)
           formData.append('timestamp', sigData.timestamp)
           formData.append('signature', sigData.signature)
