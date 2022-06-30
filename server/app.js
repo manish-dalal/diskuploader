@@ -32,7 +32,8 @@ app.use(
       /\/api\/msc*/,
       '/api/keepalive',
       /\/api\/message*/,
-      /\/api\/task*/
+      /\/api\/task*/,
+      /\/api\/h*/
     ],
     requestProperty: 'auth'
   })
