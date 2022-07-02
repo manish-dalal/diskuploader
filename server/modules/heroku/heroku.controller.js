@@ -22,8 +22,8 @@ heroku.update = async (req, res) => {
           { headers }
         )
         return res.send(`<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;padding: 40px;">
-        <h1 style="font-weight: bold;">Bot status: ${v ? ' ON' : ' OFF'}</h1>
-        <div>${JSON.stringify(updatedData, null, 4)}</div>
+        <h1 style="font-weight: bold;word-break: break-all;">Bot status: ${v ? 'ON' : 'OFF'}</span></h1>
+        <div>${JSON.stringify(updatedData, undefined, 2)}</div>
       </div>`)
       } else {
         return res.json({ error: 'Pass valid n value' })
