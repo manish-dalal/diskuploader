@@ -41,9 +41,9 @@ heroku.update = async (req, res) => {
         } = await _axios.default.patch(`https://api.heroku.com/apps/${n}/formation/${formationData[0].id}`, reqData, {
           headers
         });
-        return res.send(`<div style="display: flex;align-items: center;justify-content: center">
+        return res.send(`<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;padding: 40px;">
         <h1 style="font-weight: bold;">Bot status: ${v ? ' ON' : ' OFF'}</h1>
-        <div>${JSON.stringify(updatedData)}</div>
+        <div>${JSON.stringify(updatedData, null, 4)}</div>
       </div>`);
       } else {
         return res.json({
