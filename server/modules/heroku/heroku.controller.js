@@ -4,6 +4,7 @@ const heroku = {}
 heroku.update = async (req, res) => {
   try {
     const { n, v } = req.query
+    const parsedV = parseInt(v)
     if (process.env.HEROKU_TOKEN && n) {
       const headers = {
         Accept: 'application/vnd.heroku+json; version=3',
@@ -12,7 +13,7 @@ heroku.update = async (req, res) => {
       const { data: formationData } = await axios.get(`https://api.heroku.com/apps/${n}/formation`, { headers })
       if (formationData[0].id) {
         const reqData = {
-          quantity: parseInt(v),
+          quantity: parsedV,
           size: formationData[0].size,
           type: formationData[0].type
         }
@@ -22,7 +23,7 @@ heroku.update = async (req, res) => {
           { headers }
         )
         return res.send(`<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;padding: 40px;">
-        <h1 style="font-weight: bold;word-break: break-all;font-size: 70px;">Bot status: ${v ? 'ON' : 'OFF'}</span></h1>
+        <h1 style="font-weight: bold;word-break: break-all;font-size: 70px;">Bot status: ${parsedV ? 'ON' : 'OFF'}</span></h1>
         <pre><code>${JSON.stringify(updatedData, undefined, 2)}</code></pre>
       </div>`)
       } else {
